@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.5; user-scalable=YES;" name="viewport" />
+
+        <script>
+            function executePromise(picture){
+                var newDiv= "<div style='width:100px;height:100px'><img style ='object-fit:cover;' src='data:image/png;base64,"+ picture +"'/> </div>"
+                document.getElementById("container").innerHTML = newDiv;
+            }
+            function sendToNative(message){
+                    var native = window.webkit.messageHandlers.nativeProcess;
+                    native.postMessage(message);
+                }
+        function sendMessage(){
+                sendToNative("hello");
+            }
+        </script>
+    </head>
+    <body>
+        <div id="container"></div>
+        <input type = "button" onclick="sendMessage()" value="Capture"/>
+    </body>
+</html>
