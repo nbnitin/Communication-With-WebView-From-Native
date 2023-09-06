@@ -35,6 +35,7 @@ class WebViewWrapper: WKWebView {
 extension WebViewWrapper:WKScriptMessageHandler {
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         self.delegate?.didRecevieMessage(message: "hello")
+        print(message.body)
     }
     
     func setForCommuncationWithNative(){
